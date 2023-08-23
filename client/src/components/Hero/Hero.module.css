@@ -1,0 +1,63 @@
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideInFromLeft 1s forwards; /* Animation slides in from left */
+}
+
+.hero img {
+  max-width: 100%;
+  height: 33rem;
+  filter: drop-shadow(7px 5px 3px rgba(0, 0, 0, 0.5));
+}
+
+.heroText {
+  padding: 1rem;
+  animation: slideInFromRight 1s forwards; /* Animation slides in from right */
+}
+
+.heroText h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #407c87; /* A deep green-gray for the title text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+}
+
+.heroText p {
+  font-size: 1.5rem;
+  color: #202020; /* Slightly darker gray for the paragraph text */
+  max-width: 85%; /* Keeps the text from spanning too wide */
+  margin: 0 auto; /* Centering the text if it doesn't take full width */
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50%); /* Starts from 50% off the left side */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(50%); /* Starts from 50% off the right side */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

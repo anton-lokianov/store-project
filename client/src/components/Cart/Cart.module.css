@@ -1,0 +1,16 @@
+.total__amount {
+  font-size: 1.4rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  margin-bottom: 2rem;
+  height: 100vh;
+}
+
+.cartButtons {
+  display: flex;
+  gap: 0.5rem;
+}

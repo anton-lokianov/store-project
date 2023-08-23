@@ -1,0 +1,63 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.3rem;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  background: linear-gradient(180deg, #407c87, #0f3853);
+  box-shadow: rgb(0 0 0 / 25%) 0px 5px 10px;
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container__left {
+  display: flex;
+  align-items: center;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+}
+
+.navbarRight__item {
+  display: flex;
+  flex-direction: column; /* This makes the spans stack vertically */
+  gap: 0.5rem; /* Adjust the spacing between the spans as necessary */
+  align-items: start; /* Align items to the start (left) */
+  font-size: 0.9rem; /* Adjust font size as necessary */
+}
+
+.navbarRight__item span {
+  margin: 0; /* Remove any default margins */
+  padding: 0.3rem 0.5rem; /* A little padding for each span for better visual appeal */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Slight background to highlight each item */
+  border-radius: 5px; /* Rounded corners for the background */
+  color: whitesmoke; /* Adjust text color as needed */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.navbarRight__item span:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Darken the background slightly on hover */
+}
+
+.searchBar {
+  margin-left: 1.6rem;
+}
+
+.container__left h1:hover {
+  cursor: pointer;
+}

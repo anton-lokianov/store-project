@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  background: radial-gradient(#eef1f6, #d3e1e2);
+  color: #202020;
+}
+
+.loginContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  padding: 2rem;
+  height: 94vh;
+  background: linear-gradient(#5e5f5f, #63777a);
+}
+
+.mainPage {
+  margin-top: 6rem;
+}
