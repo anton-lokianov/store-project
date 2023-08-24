@@ -5,12 +5,27 @@
   justify-content: space-between;
 }
 
+@media (max-width: 1600px) {
+  .total__amount {
+    font-size: 1.2rem;
+  }
+}
+
 .container {
   margin-bottom: 2rem;
   height: 100vh;
+  overflow: auto;
+  padding-bottom: 10rem;
 }
 
 .cartButtons {
   display: flex;
   gap: 0.5rem;
+}
+
+@media (max-width: 1600px) {
+  .cartButtons button {
+    font-size: 0.75rem;
+
+  };
 }

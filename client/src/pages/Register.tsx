@@ -80,13 +80,15 @@ export const Register = () => {
           lg: "40%", // 40% width on large screens and up
         },
         margin: "0 auto",
-        transform: "translateY(10rem)",
-      }}>
+        transform: "translateY(8rem)",
+      }}
+    >
       <Typography
         variant="h3"
         gutterBottom
         className="purpleText"
-        sx={{ textAlign: "center" }}>
+        sx={{ textAlign: "center" }}
+      >
         Register
       </Typography>
       <Stepper activeStep={activeStep}>
@@ -125,7 +127,8 @@ export const Register = () => {
                   padding: "1rem",
                   borderRadius: "10px",
                 }}
-                onSubmit={firstStepSubmit}>
+                onSubmit={firstStepSubmit}
+              >
                 <TextField
                   {...register("idNumber")}
                   label="Id Number"
@@ -162,7 +165,8 @@ export const Register = () => {
                   sx={{
                     display: "flex",
                     justifyContent: "flex-end",
-                  }}>
+                  }}
+                >
                   <Button type="submit">Next</Button>
                 </Box>
               </form>
@@ -181,7 +185,8 @@ export const Register = () => {
                   padding: "1rem",
                   borderRadius: "10px",
                 }}
-                onSubmit={secondStepSubmit}>
+                onSubmit={secondStepSubmit}
+              >
                 <TextField
                   {...register("city")}
                   name="city"

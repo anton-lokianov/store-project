@@ -1,10 +1,14 @@
 import { Request, Response } from "express";
-import { ShoppingCartModel } from "../models/Store";
+import { ShoppingCartModel, UserModel } from "../models/Store";
 
 export const getShoppingCart = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     // Fetch the latest shopping cart for the user
+    const user = await UserModel.findById(id);
+
+    if (user?.role !== "customer") return;
+
     const lastShoppingCart = await ShoppingCartModel.findOne({ customerId: id })
       .sort({ createdAt: -1 })
       .limit(1);

@@ -18,12 +18,19 @@ const Shopping = () => {
   return (
     <>
       {!isMobile ? (
-        <Box display="grid" gridTemplateColumns="2fr 4fr">
+        <Box
+          display="grid"
+          gridTemplateColumns="2fr 4fr"
+          sx={{ overflow: "hidden", height: "100vh" }}
+        >
           <Box sx={{ mt: "6rem" }} gridColumn="1 / 2">
             {userRole ? <ProductForm /> : <Cart />}
           </Box>
 
-          <Box gridColumn="2 / 3" sx={{ mt: "6rem" }}>
+          <Box
+            gridColumn="2 / 3"
+            sx={{ mt: "6rem", height: "100vh", overflow: "auto", pb: "10rem" }}
+          >
             {orderStatus ? <OrderForm /> : <Products />}
           </Box>
         </Box>

@@ -37,6 +37,8 @@ const Navbar = () => {
   const orderStatus = useSelector(
     (state: RootState) => state.shoppingCart.orderCartStatus
   );
+  const cartItems = useSelector((state: RootState) => state.cartItem.cartItems);
+  const isAdmin = user?.role === "admin";
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -126,7 +128,8 @@ const Navbar = () => {
               style={{ cursor: "pointer" }}
               aria-controls="user-menu"
               aria-haspopup="true"
-              onClick={handleClick}>
+              onClick={handleClick}
+            >
               Welcome {fullName}
               <SentimentSatisfiedAltIcon
                 style={{ fontSize: "0.9rem", marginLeft: "0.2rem" }}
@@ -138,9 +141,14 @@ const Navbar = () => {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}>
-            {location.pathname !== "/shopping" && (
-              <MenuItem onClick={handleStartShopping}>Start Shopping</MenuItem>
+            onClose={handleClose}
+          >
+            {location.pathname !== "/shopping" && !isAdmin && (
+              <MenuItem onClick={handleStartShopping}>
+                {cartItems.length === 0
+                  ? "Start Shopping"
+                  : "Continue Shopping"}
+              </MenuItem>
             )}
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>

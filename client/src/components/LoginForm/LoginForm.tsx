@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../service/auth-slice";
 import { setShoppingCart } from "../../service/shoppingCart-slice";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 
 const LoginForm = () => {
   const { register, handleSubmit, errors, setError, reset } =
@@ -18,6 +19,7 @@ const LoginForm = () => {
   const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cartItem.cartItems);
+  const isAdmin = user?.role === "admin";
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -47,31 +49,59 @@ const LoginForm = () => {
     <div className={styles.container}>
       {user ? (
         <>
-          <h1 className={styles.loggedTitle}>Welcome Back!</h1>
+          <h1 className={styles.loggedTitle}>
+            {!isAdmin ? "Welcome Back!" : "Hello Admin"}
+          </h1>
           <p>
             You are signed in.{" "}
-            {cartItems.length > 0 ? "Continue Shopping" : "Start Shopping"} now!
+            {!isAdmin ? (
+              <>
+                {cartItems.length > 0 ? "Continue Shopping" : "Start Shopping"}{" "}
+                now!
+              </>
+            ) : (
+              "You can now manage your products"
+            )}
           </p>
           <Button
             onClick={async () => {
               navigate("/shopping");
               window.scrollTo(0, 0);
-            }}>
-            {cartItems.length > 0 ? "Continue Shopping" : "Start Shopping"}
+            }}
+          >
+            {!isAdmin ? (
+              <>
+                {cartItems.length > 0 ? "Continue Shopping" : "Start Shopping"}
+              </>
+            ) : (
+              "Manage Products"
+            )}
           </Button>
-          <Badge
-            color="warning"
-            badgeContent={cartItems.length}
-            sx={{
-              mt: "3rem",
-            }}>
-            <ShoppingCartIcon
+          {isAdmin && (
+            <AdminPanelSettingsIcon
               fontSize="large"
               sx={{
                 color: "#407c87",
+                mt: "3rem",
               }}
             />
-          </Badge>
+          )}
+          {!isAdmin && (
+            <Badge
+              color="warning"
+              badgeContent={cartItems.length}
+              sx={{
+                mt: "3rem",
+              }}
+            >
+              <ShoppingCartIcon
+                fontSize="large"
+                sx={{
+                  color: "#407c87",
+                }}
+              />
+            </Badge>
+          )}
         </>
       ) : (
         <>

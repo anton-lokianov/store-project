@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter } from "react-router-dom";
-import MainRoute from "./routes/MainRoute";
+import { BrowserRouter, RouterProvider } from "react-router-dom";
+import MainRoute from "./routes/RootLayout";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./styles/style";
 import { setProducts } from "./service/product-slice";
@@ -9,6 +9,7 @@ import useHttp from "./hooks/useHttp";
 import { useEffect } from "react";
 import { setCartItems } from "./service/cartItem-slice";
 import { RootState } from "./service/Store";
+import { routes } from "./routes/MainRoutes";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,16 +37,18 @@ function App() {
 
   useEffect(() => {
     getProducts();
-    getAllCartItems();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (cartId) {
+      getAllCartItems();
+    }
+  }, [cartId]);
 
   return (
     <>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Navbar />
-          <MainRoute />
-        </BrowserRouter>
+        <RouterProvider router={routes} />
       </ThemeProvider>
     </>
   );

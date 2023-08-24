@@ -130,7 +130,7 @@ const ProductForm = () => {
   };
 
   return (
-    <>
+    <Box sx={{ overflow: "auto", height: "100vh", pb: "10rem" }}>
       <Box
         component="form"
         sx={{
@@ -139,13 +139,14 @@ const ProductForm = () => {
           gap: "1rem",
           maxWidth: "30rem",
           margin: "auto",
-          mt: "3.2rem",
+          mt: "6rem",
           backgroundColor: "#f5f5f5",
           padding: "1rem",
           borderRadius: "10px",
           boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
         }}
-        onSubmit={onSubmit}>
+        onSubmit={onSubmit}
+      >
         <Typography variant="h4" align="center">
           {productToEdit ? "Update Product" : "Add Product"}
         </Typography>
@@ -166,7 +167,8 @@ const ProductForm = () => {
               {...field}
               id="categoryId"
               label="Category"
-              select>
+              select
+            >
               {categories.map((category: Category) => (
                 <MenuItem key={category._id} value={category._id}>
                   {category.categoryName}
@@ -210,7 +212,7 @@ const ProductForm = () => {
           </Button>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 };
 
