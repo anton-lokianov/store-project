@@ -10,6 +10,7 @@ import { setLogin } from "../../service/auth-slice";
 import { setShoppingCart } from "../../service/shoppingCart-slice";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import { useEffect, useState } from "react";
 
 const LoginForm = () => {
   const { register, handleSubmit, errors, setError, reset } =
@@ -20,6 +21,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cartItem.cartItems);
   const isAdmin = user?.role === "admin";
+  const [lastOrder, setLastOrder] = useState({});
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -45,6 +47,24 @@ const LoginForm = () => {
     }
   });
 
+  const getLastOrder = async () => {
+    try {
+      const response = await sendRequest(
+        "get",
+        `/order/lastOrder/${user?._id}`
+      );
+      setLastOrder(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    if (user?._id) {
+      getLastOrder();
+    }
+  }, [user?._id]);
+
   return (
     <div className={styles.container}>
       {user ? (
@@ -67,8 +87,7 @@ const LoginForm = () => {
             onClick={async () => {
               navigate("/shopping");
               window.scrollTo(0, 0);
-            }}
-          >
+            }}>
             {!isAdmin ? (
               <>
                 {cartItems.length > 0 ? "Continue Shopping" : "Start Shopping"}
@@ -87,20 +106,21 @@ const LoginForm = () => {
             />
           )}
           {!isAdmin && (
-            <Badge
-              color="warning"
-              badgeContent={cartItems.length}
-              sx={{
-                mt: "3rem",
-              }}
-            >
-              <ShoppingCartIcon
-                fontSize="large"
+            <>
+              <Badge
+                color="warning"
+                badgeContent={cartItems.length}
                 sx={{
-                  color: "#407c87",
-                }}
-              />
-            </Badge>
+                  mt: "3rem",
+                }}>
+                <ShoppingCartIcon
+                  fontSize="large"
+                  sx={{
+                    color: "#407c87",
+                  }}
+                />
+              </Badge>
+            </>
           )}
         </>
       ) : (
