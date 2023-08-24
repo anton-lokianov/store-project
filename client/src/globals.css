@@ -19,7 +19,7 @@ body,
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
-  padding: 2rem;
+  padding: 3rem;
   height: 94vh;
   background: linear-gradient(#5e5f5f, #63777a);
 }
@@ -27,7 +27,3 @@ body,
 .mainPage {
   margin-top: 6rem;
 }
-
-
-
-

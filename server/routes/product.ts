@@ -7,12 +7,13 @@ import {
 } from "../controllers/product";
 
 import { Router } from "express";
+import { verifyToken } from "../middleware/auth";
 
 const router = Router();
 
-router.post("/", upload.single("imagePath"), addProduct);
-router.put("/:id", upload.single("imagePath"), updateProduct);
-router.get("/searchProduct", searchProduct);
+router.post("/", verifyToken, upload.single("imagePath"), addProduct);
+router.put("/:id", verifyToken, upload.single("imagePath"), updateProduct);
+router.get("/searchProduct", verifyToken, searchProduct);
 router.get("/", getAllProducts);
 
 export default router;

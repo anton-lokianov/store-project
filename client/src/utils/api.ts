@@ -7,7 +7,7 @@ export const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const persistedUsers = localStorage.getItem("persist:users");
+    const persistedUsers = localStorage.getItem("persist:auth");
     let token;
 
     if (persistedUsers) {

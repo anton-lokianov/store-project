@@ -1,5 +1,6 @@
 import express from "express";
 import { getShoppingCart } from "../controllers/shoppingCart";
+import { verifyToken } from "../middleware/auth";
 
 const router = express.Router();
 

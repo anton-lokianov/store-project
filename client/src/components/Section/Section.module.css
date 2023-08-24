@@ -1,12 +1,11 @@
 .container {
-  position: relative;
-  width: 700px;
+  width: 500px;
   margin: 0 auto;
 }
 
 @media (max-width: 1600px) {
   .container {
-    width: 36rem;
+    width: 30rem;
   }
 }
 
@@ -15,24 +14,10 @@
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   color: #407c87;
-  font-size: 1.6rem;
-  position: absolute;
-  top: -100px;
-  left: 11%;
-}
-
-@media (max-width: 1600px) {
-  .title {
-    font-size: 1.3rem;
-    top: -91px;
-    right: 4rem;
-  }
+  font-size: 1.5rem;
 }
 
 .carousel {
-  position: absolute;
-  top: 2rem;
-  left: 0;
 }
 
 .carousel img {
@@ -42,15 +27,36 @@
   background-color: #fff7f7;
 }
 
-
 .legend {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
-  padding: 5px 10px;
   border-radius: 5px;
   font-size: 18px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.info {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  background-color: #f7f7f7; /* Light gray background for visual contrast */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.info__item {
+  flex: 1; /* Make each item take equal space */
+  text-align: center; /* Center the text inside each item */
+  padding: 0.5rem; /* Padding around each item for spacing */
+}
+
+.info__item h4 {
+  font-size: 1.5rem; /* Bigger font size for numbers */
+  color: #407c87; /* Match the title color */
+}
+
+.info__item p {
+  font-size: 1rem; /* Regular font size for labels */
+  color: #666; /* Slightly muted color for labels */
+  text-transform: uppercase; /* Uppercase labels for style */
+  letter-spacing: 1px; /* Increase spacing between letters for readability */
 }

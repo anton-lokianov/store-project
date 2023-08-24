@@ -3,11 +3,13 @@ import Main from "../pages/Main";
 import Register from "../pages/Register";
 import Shopping from "../pages/Shopping";
 import RootLayout from "./RootLayout";
+import Page404 from "../pages/Page404";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <Page404 />,
     children: [
       {
         index: true,

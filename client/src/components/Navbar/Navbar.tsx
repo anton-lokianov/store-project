@@ -7,7 +7,7 @@ import Menu from "@mui/material/Menu";
 import { useEffect, useRef, useState } from "react";
 import { Button, InputAdornment, MenuItem, TextField } from "@mui/material";
 import { setLogout } from "../../service/auth-slice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useNavigation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import useHttp from "../../hooks/useHttp";
@@ -128,8 +128,7 @@ const Navbar = () => {
               style={{ cursor: "pointer" }}
               aria-controls="user-menu"
               aria-haspopup="true"
-              onClick={handleClick}
-            >
+              onClick={handleClick}>
               Welcome {fullName}
               <SentimentSatisfiedAltIcon
                 style={{ fontSize: "0.9rem", marginLeft: "0.2rem" }}
@@ -141,8 +140,7 @@ const Navbar = () => {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
+            onClose={handleClose}>
             {location.pathname !== "/shopping" && !isAdmin && (
               <MenuItem onClick={handleStartShopping}>
                 {cartItems.length === 0

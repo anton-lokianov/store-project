@@ -4,11 +4,12 @@ import {
   getOverBookedDates,
   makeOrder,
 } from "../controllers/order";
+import { verifyToken } from "../middleware/auth";
 
 const router = Router();
 
-router.post("/", makeOrder);
+router.post("/", verifyToken, makeOrder);
 router.get("/orderAmount", getAllOrdersAmount);
-router.get("/getOverBookedDates", getOverBookedDates);
+router.get("/getOverBookedDates", verifyToken, getOverBookedDates);
 
 export default router;

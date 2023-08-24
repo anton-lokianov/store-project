@@ -22,7 +22,7 @@ function App() {
       const response = await sendRequest("get", "/product/");
       if (response) dispatch(setProducts(response));
     } catch (err: any) {
-      throw new Error(err);
+      console.log(err);
     }
   };
 
