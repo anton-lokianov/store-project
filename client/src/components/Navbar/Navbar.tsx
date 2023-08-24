@@ -74,7 +74,9 @@ const Navbar = () => {
       hasDispatched.current = false;
       dispatch(searchProduct(response));
       dispatch(resetSelectedCategory());
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

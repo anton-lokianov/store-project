@@ -1,6 +1,4 @@
-import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter, RouterProvider } from "react-router-dom";
-import MainRoute from "./routes/RootLayout";
+import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./styles/style";
 import { setProducts } from "./service/product-slice";
